@@ -1,24 +1,17 @@
-=================
-c2c.recipe.cssmin
-=================
+==========
+c2c.cssmin
+==========
 
 Requirements
 ------------
-Requires zc.buildout and `cssmin <http://pypi.python.org/pypi/cssmin>`_
+
+Requires `cssmin <http://pypi.python.org/pypi/cssmin>`_
 
 Usage
 -----
-Create a buildout.cfg file which contains the following::
 
-    [buildout]
-    parts = cssmin
+.. code::
 
-    [cssmin]
-    recipe = c2c.recipe.cssmin
-    input = foo/bar/file1.css
-            foo/bar/file2.css
-            foo/baz/file3.css
-    output = foo/build/output.min.css
-    compress = true
+    cssmin --compress foo/build/output.min.css foo/bar/file1.css foo/bar/file2.css foo/baz/file3.css
 
-Path are relative to the buildout directory, absolute path are also allowed.
+Path are relative to the current directory, absolute path are also allowed.
