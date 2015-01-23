@@ -81,4 +81,4 @@ def main():
             output.write(css)
     output.close()
 
-    print("Merging %s to %s" % (options.inputs, options.output))
+    print("Merging %s to %s" % (", ".join(options.inputs), options.output))
