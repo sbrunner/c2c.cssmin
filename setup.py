@@ -28,7 +28,7 @@ setup(
     test_suite="c2c.cssmin",
     entry_points={
         "console_scripts": [
-            "c2c-cssmin=c2c.cssmin:main",
+            "c2c-cssmin=c2c.cssmin_:main",
         ]
     }
 )

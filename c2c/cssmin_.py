@@ -31,7 +31,7 @@ import re
 import os
 
 from os.path import relpath
-import cssmin
+from cssmin import cssmin
 from argparse import ArgumentParser
 
 
@@ -69,14 +69,14 @@ def main():
 
     options = parser.parse_args()
 
-    dir = os.path.dirname(options.output)
-    if not os.path.exists(dir):
-        os.makedirs(dir)
+    directory = os.path.dirname(options.output)
+    if directory != "" and not os.path.exists(directory):
+        os.makedirs(directory)
     output = open(options.output, "wt")
     for f in options.inputs:
         css = relocate_urls(open(f).read(), f, options.output)
         if options.compress:
-            output.write(cssmin.cssmin(css, wrap=options.wrap))
+            output.write(cssmin(css))
         else:
             output.write(css)
     output.close()
