@@ -51,7 +51,7 @@ def relative(src, dest):
         if m is not None:
             abspath = os.path.normpath(os.path.join(srcdir, m.group(1)))
             # force '/' as path separator
-            return "url('%s')" % '/'.join(relpath(abspath, destdir).split(os.sep))
+            return "url('%s')" % "/".join(relpath(abspath, destdir).split(os.sep))
 
     return _relative
 
@@ -61,16 +61,18 @@ def main():
         description="Minify and aggregate CSS"
     )
 
-    parser.add_argument("--compress", "-c", action='store_true', help="Minify the CSS")
-    parser.add_argument("output", metavar="OUTPUT_FILE", help="The output file")
-    parser.add_argument("inputs", metavar="INPUT_FILE", help="The input files")
+    parser.add_argument("--compress", "-c", action="store_true", help="minify the CSS")
+    parser.add_argument("output", metavar="OUTPUT_FILE", help="the output file")
+    parser.add_argument(
+        "inputs", metavar="INPUT_FILE", nargs="+", help="the input files"
+    )
 
     options = parser.parse_args()
 
     dir = os.path.dirname(options.output)
     if not os.path.exists(dir):
         os.makedirs(dir)
-    output = open(options.output, 'wt')
+    output = open(options.output, "wt")
     for f in options.inputs:
         css = relocate_urls(open(f).read(), f, options.output)
         if options.compress:
