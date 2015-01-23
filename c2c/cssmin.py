@@ -31,7 +31,7 @@ import re
 import os
 
 from os.path import relpath
-from cssmin import cssmin
+import cssmin
 from argparse import ArgumentParser
 
 
@@ -76,7 +76,7 @@ def main():
     for f in options.inputs:
         css = relocate_urls(open(f).read(), f, options.output)
         if options.compress:
-            output.write(cssmin(css, wrap=options.wrap))
+            output.write(cssmin.cssmin(css, wrap=options.wrap))
         else:
             output.write(css)
     output.close()
