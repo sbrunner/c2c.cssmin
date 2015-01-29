@@ -6,6 +6,7 @@ from setuptools import setup, find_packages
 setup(
     name="c2c.cssmin",
     version="0.7",
+    namespace_packages=['c2c'],
     license="MIT License",
 
     author="Camptocamp",
